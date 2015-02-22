@@ -2,6 +2,7 @@ import java.sql.*;
 
 public class db
 {
+	//add comment test
 	public static void CREATE_TABLES(Connection db, String Table)
 	{
 		String SQL;
