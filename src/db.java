@@ -10,7 +10,7 @@ public class db
 		try {
 			stmt = db.createStatement();
 			If(Table == "RESOURCES" || Table == "ALL"); {
-				SQL = "CREATE TABLE RESOURCES " +
+				SQL = "CREATE TABLE IF NOT EXISTS RESOURCES " +
 					  "(ID INT PRIMARY KEY     NOT NULL," +
 					  " CATEGORY       TEXT    NOT NULL, " + //NAME OF ATTRIBUTES COLUMN
 					  " NAME           TEXT    NOT NULL, " + //ALL UNIQUE COLUMN VALUES
@@ -20,15 +20,29 @@ public class db
 					  " GOALVAL        TEXT)";   //BLACK, BLUE, GREEN, RED
 				stmt.executeUpdate(SQL);
 			};
-			SQL = "CREATE TABLE RESOURCE_CONCERNS " +
-				  "(ID INT PRIMARY KEY     NOT NULL," +
-				  " NAME           TEXT    NOT NULL, " +
-			      " RESOURCE_ID    TEXT    NOT NULL, " + //1,2,3,4
-				  " MODIFIER       REAL    NOT NULL, " + 
-				  " GOALTYPE       TEXT, " + 
-			      " GOALNUM        INT, " +
-				  " GOALVAL        TEXT)";
-			stmt.executeUpdate(SQL);
+			If(Table == "RESOURCE_CONCERNS" || Table == "ALL"); {
+				SQL = "CREATE TABLE IF NOT EXISTS RESOURCE_CONCERNS " +
+					  "(ID INT PRIMARY KEY     NOT NULL," +
+					  " NAME           TEXT    NOT NULL, " +
+				      " RESOURCE_ID    TEXT    NOT NULL, " + //1,2,3,4
+					  " MODIFIER       REAL    NOT NULL, " + 
+					  " GOALTYPE       TEXT, " + 
+				      " GOALNUM        INT, " +
+					  " GOALVAL        TEXT)";
+				stmt.executeUpdate(SQL);
+			};
+			If(Table == "DECISIONS" || Table == "ALL"); {
+				SQL = "CREATE TABLE IF NOT EXISTS DECISIONS " +
+					  "(ID INT PRIMARY         KEY     NOT NULL," +
+					  " CHOICE                 TEXT    NOT NULL, " +
+				      " RESOURCE_ID            TEXT    NOT NULL, " + //1,2,3,4
+				      " RESOURCE_CONCERN_ID    TEXT    NOT NULL, " + //1,2,3,4
+					  " MODIFIER               REAL    NOT NULL, " + 
+					  " GOALTYPE               TEXT, " + 
+				      " GOALNUM                INT, " +
+					  " GOALVAL                TEXT)";
+				stmt.executeUpdate(SQL);
+			};
 			stmt.close();
 			db.close();
 		} catch (SQLException e) {
