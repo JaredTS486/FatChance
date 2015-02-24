@@ -60,7 +60,7 @@ public class db
 	    Connection db = null;
 	    try {
 		    Class.forName("org.sqlite.JDBC");
-			db = DriverManager.getConnection("jdbc:sqlite:test.db");
+			db = DriverManager.getConnection("jdbc:sqlite:database.db");
 			CREATE_TABLES(db, "ALL");
 				
 	    } catch ( Exception e ) {
