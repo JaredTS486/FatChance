@@ -1,13 +1,5 @@
 import java.awt.EventQueue;
 import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
-import java.awt.BorderLayout;
-import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import java.awt.FlowLayout;
-import javax.swing.JLabel;
 
 public class main_window extends db{
 
@@ -44,6 +36,5 @@ public class main_window extends db{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 540, 430);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 	}
 }
